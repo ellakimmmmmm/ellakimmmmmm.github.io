@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>DORIMGO Portfolio</title>
+    <style>
+        /* 폰트 임포트: Permanent Marker를 홈 텍스트용, Jua를 기본용 */
+        @import url('https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Jua&display=swap');
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Jua', sans-serif;
+            text-align: center;
+            background-color: #fff;
+            color: #333;
+        }
+        
+        /* 헤더와 풋터: width 100%로 전체 너비 차지 */
+        header, footer {
+            padding: 30px;
+            width: 100%; /* OK: 반응형으로 전체 너비 차지 */
+        }
+        
+        footer {
+            position: fixed;
+            bottom: 0;
+            background-color: #fff;
+            border-top: 1px solid #eaeaea;
+        }
+
+        header {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* 헤더 이미지가 꽉 차도록 설정 */
+        header img {
+            width: 80%;
+            height: auto;
+            display: block; /* 여백 제거 */
+        }
+
+        /* 내비게이션 링크 스타일 */
+        nav a {
+            margin: 0 15px;
+            text-decoration: none;
+            color: #000;
+            cursor: pointer;
+        }
+        nav a.active {
+            color: green;
+            border-bottom: 2px solid green;
+        }
+
+        /* 섹션 기본 숨김 */
+        section {
+            padding: 40px;
+            display: none;
+        }
+        /* 홈과 연락처 섹션만 예시, 이미지/비디오 너비 통일 */
+        img, video {
+            width: 300px;
+        }
+
+        /* 페이드 인 애니메이션: Permanent Marker 폰트 사용 */
+        .fade-in {
+            animation: fadeIn 3s ease-in;
+            font-family: 'Permanent Marker', cursive;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        /* 프로필, 포트폴리오, 연락처 레이아웃 */
+        .profile-content,
+        .portfolio-content,
+        .contact-content {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+            flex-wrap: wrap; /* 화면 축소 시 줄바꿈 */
+        }
+
+        .text-large {
+            font-size: 100px;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <!-- 오류: image9 파일 형식 확인 필요 (png vs jpg) -->
+    <img src="image9.png" alt="헤더 이미지">
+</header>
+
+<section id="home" style="display: block;">
+    <!-- 홈 섹션에 이미지 누락: image1.jpg 추가 필요 -->
+    <!-- <img src="image1.jpg" alt="홈 이미지"> -->
+    <div class="text-large fade-in">DORIMGO</div>
+</section>
+
+<section id="profile">
+    <div class="profile-content">
+        <img src="image2.png" alt="프로필 이미지">
+        <div>
+            <h2>DORIMGO</h2>
+            <p>
+                살아오며 인상 깊었던 문장 or 이번 생에 풀고 싶은 질문<br>
+                “인생이 나에게 레몬을 주거든, 그것으로 레몬 에이드를 만들어라.”<br>
+                내가 사랑하는 것들<br>
+                우리 가족, 웹툰 유미의 세포들, 표고버섯, 맛조개 잡기, 튀르키예, 오키나와<br>
+                10년 후에 나는<br>
+                29살 나는 어떤 모습일까? 여전히 내가 사랑하는 것을 소중히 여기고, 조금 더 자유롭고 단단해진 내가 되어 있기를.
+            </p>
+            <p>
+                봉사 활동<br>
+                [2022.07] ~ [2022.08] 지역 아동센터 여름방학 코딩 캠프 운영<br>
+                [2023.04] ~ [2023.06] 초등학생 대상 미술 심리 활동 보조<br>
+                수상 경력<br>
+                [2023.11] 지역 창의소프트웨어 공모전 우수상<br>
+                [2022.10] 학습 멘토링 우수활동자 표창<br>
+                관심 분야 활동<br>
+                [2021.03] ~ [2022.12] 중·고등학생 대상 파이썬 기초강의 진행<br>
+                [2023.01] ~ [2023.05] 환경 교육 프로젝트 ‘지구지킴이’ 참여
+            </p>
+        </div>
+    </div>
+</section>
+
+<section id="portfolio">
+    <div class="portfolio-content">
+        <!-- 이미지 파일 확장자 통일 권장 (.jpg 또는 .png) -->
+        <div>
+            <img src="image3.png" alt="생성형 이미지"><br>생성형 이미지
+        </div>
+        <div>
+            <img src="image4.png" alt="캐릭터 만들기"><br>캐릭터 만들기
+        </div>
+        <div>
+            <img src="image5.png" alt="생성형 이미지"><br>생성형 이미지
+        </div>
+        <div>
+            <img src="image6.png" alt="캐릭터 만들기"><br>캐릭터 만들기
+        </div>
+    </div>
+    <div class="portfolio-content">
+        <div>
+            <video src="video1.mp4" controls></video><br>음악 생성
+        </div>
+        <div>
+            <video src="video2.mp4" controls></video><br>음악 생성
+        </div>
+        <div>
+            <video src="video3.mp4" controls></video><br>캐릭터 생성
+        </div>
+    </div>
+</section>
+
+<section id="contact">
+    <div class="contact-content">
+        <!-- image7.jpg와 png 혼용됨: 파일명/경로 확인 필요 -->
+        <img src="image7.jpg" alt="Contact Image">
+        <p>DORIMGO@gmail.com</p>
+    </div>
+</section>
+
+<footer>
+    <nav>
+        <!-- event.currentTarget 사용 오류: inline handler에서 event 미전달 -->
+        <!-- 해결: onclick="showSection(event, 'home', this)" 등 전달하거나 this 사용 -->
+        <a onclick="showSection(event, 'home', this)" class="active">Home</a>
+        <a onclick="showSection(event, 'profile', this)">Profile</a>
+        <a onclick="showSection(event, 'portfolio', this)">Portfolio</a>
+        <a onclick="showSection(event, 'contact', this)">Contact Us</a>
+    </nav>
+</footer>
+
+<script>
+/* 수정: event와 element를 인자로 받아야 event.currentTarget 사용 가능 */
+function showSection(evt, sectionId, element) {
+    document.querySelectorAll('section').forEach(section => {
+        section.style.display = 'none';
+    });
+    document.getElementById(sectionId).style.display = 'block';
+
+    document.querySelectorAll('nav a').forEach(link => {
+        link.classList.remove('active');
+    });
+    element.classList.add('active');
+}
+</script>
+
+</body>
+</html>
