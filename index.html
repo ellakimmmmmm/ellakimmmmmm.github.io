@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <title>DORIMGO Portfolio</title>
     <style>
-        /* 폰트 임포트: Permanent Marker를 홈 텍스트용, Jua를 기본용 */
         @import url('https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap');
         @import url('https://fonts.googleapis.com/css2?family=Jua&display=swap');
 
@@ -16,13 +15,12 @@
             background-color: #fff;
             color: #333;
         }
-        
-        /* 헤더와 풋터: width 100%로 전체 너비 차지 */
+
         header, footer {
             padding: 30px;
-            width: 100%; /* OK: 반응형으로 전체 너비 차지 */
+            width: 100%;
         }
-        
+
         footer {
             position: fixed;
             bottom: 0;
@@ -36,14 +34,12 @@
             align-items: center;
         }
 
-        /* 헤더 이미지가 꽉 차도록 설정 */
         header img {
             width: 80%;
             height: auto;
-            display: block; /* 여백 제거 */
+            display: block;
         }
 
-        /* 내비게이션 링크 스타일 */
         nav a {
             margin: 0 15px;
             text-decoration: none;
@@ -55,17 +51,15 @@
             border-bottom: 2px solid green;
         }
 
-        /* 섹션 기본 숨김 */
         section {
             padding: 40px;
             display: none;
         }
-        /* 홈과 연락처 섹션만 예시, 이미지/비디오 너비 통일 */
+
         img, video {
             width: 300px;
         }
 
-        /* 페이드 인 애니메이션: Permanent Marker 폰트 사용 */
         .fade-in {
             animation: fadeIn 3s ease-in;
             font-family: 'Permanent Marker', cursive;
@@ -75,7 +69,6 @@
             to { opacity: 1; }
         }
 
-        /* 프로필, 포트폴리오, 연락처 레이아웃 */
         .profile-content,
         .portfolio-content,
         .contact-content {
@@ -83,7 +76,7 @@
             justify-content: center;
             align-items: center;
             gap: 20px;
-            flex-wrap: wrap; /* 화면 축소 시 줄바꿈 */
+            flex-wrap: wrap;
         }
 
         .text-large {
@@ -93,14 +86,14 @@
 </head>
 <body>
 
+<!-- 배경 음악용 비디오 (소리만 사용, 초기 볼륨 20%) -->
+<video id="bg-music" src="video1.mp4" autoplay loop style="display:none"></video>
+
 <header>
-    <!-- 오류: image9 파일 형식 확인 필요 (png vs jpg) -->
     <img src="image9.png" alt="헤더 이미지">
 </header>
 
 <section id="home" style="display: block;">
-    <!-- 홈 섹션에 이미지 누락: image1.jpg 추가 필요 -->
-    <!-- <img src="image1.jpg" alt="홈 이미지"> -->
     <div class="text-large fade-in">DORIMGO</div>
 </section>
 
@@ -109,8 +102,7 @@
         <img src="image2.png" alt="프로필 이미지">
         <div>
             <h2>DORIMGO</h2>
-            <p>
-                살아오며 인상 깊었던 문장 or 이번 생에 풀고 싶은 질문<br>
+            <p>살아오며 인상 깊었던 문장 or 이번 생에 풀고 싶은 질문<br>
                 “인생이 나에게 레몬을 주거든, 그것으로 레몬 에이드를 만들어라.”<br>
                 내가 사랑하는 것들<br>
                 우리 가족, 웹툰 유미의 세포들, 표고버섯, 맛조개 잡기, 튀르키예, 오키나와<br>
@@ -134,7 +126,6 @@
 
 <section id="portfolio">
     <div class="portfolio-content">
-        <!-- 이미지 파일 확장자 통일 권장 (.jpg 또는 .png) -->
         <div>
             <img src="image3.png" alt="생성형 이미지"><br>생성형 이미지
         </div>
@@ -163,7 +154,6 @@
 
 <section id="contact">
     <div class="contact-content">
-        <!-- image7.jpg와 png 혼용됨: 파일명/경로 확인 필요 -->
         <img src="image7.jpg" alt="Contact Image">
         <p>DORIMGO@gmail.com</p>
     </div>
@@ -171,17 +161,15 @@
 
 <footer>
     <nav>
-        <!-- event.currentTarget 사용 오류: inline handler에서 event 미전달 -->
-        <!-- 해결: onclick="showSection(event, 'home', this)" 등 전달하거나 this 사용 -->
         <a onclick="showSection(event, 'home', this)" class="active">Home</a>
         <a onclick="showSection(event, 'profile', this)">Profile</a>
         <a onclick="showSection(event, 'portfolio', this)">Portfolio</a>
         <a onclick="showSection(event, 'contact', this)">Contact Us</a>
+        <button onclick="toggleMusic()" style="margin-left: 20px; padding: 5px 10px; font-family: 'Jua';">음악 켜기/끄기</button>
     </nav>
 </footer>
 
 <script>
-/* 수정: event와 element를 인자로 받아야 event.currentTarget 사용 가능 */
 function showSection(evt, sectionId, element) {
     document.querySelectorAll('section').forEach(section => {
         section.style.display = 'none';
@@ -193,6 +181,24 @@ function showSection(evt, sectionId, element) {
     });
     element.classList.add('active');
 }
+
+function toggleMusic() {
+    const bgMusic = document.getElementById('bg-music');
+    if (bgMusic.muted) {
+        bgMusic.muted = false;
+        bgMusic.play();
+    } else {
+        bgMusic.muted = true;
+    }
+}
+
+// 페이지 로딩 시 볼륨 설정 및 자동 재생
+window.addEventListener('DOMContentLoaded', () => {
+    const bgMusic = document.getElementById('bg-music');
+    bgMusic.volume = 0.1; // 10% 볼륨 설정
+    bgMusic.muted = false;
+    bgMusic.play().catch(e => console.warn('자동 재생 차단:', e));
+});
 </script>
 
 </body>
